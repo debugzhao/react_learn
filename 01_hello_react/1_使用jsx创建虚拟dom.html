@@ -19,9 +19,17 @@
 
     <script type="text/babel">  /* 此处一定要写babel */
         // 1.创建虚拟dom
-        const VDOM = <h1>Hello React</h1> // 此处一定不要写引号，因为不是字符串
+        // 此处一定不要写引号，因为不是字符串
+        const VDOM1 = (
+            <h1 id = 'title'>
+                <span>Hello React</span>
+            </h1>
+        )
         // 2.渲染虚拟dom到页面
-        ReactDOM.render(VDOM, document.getElementById('test'))
+        ReactDOM.render(VDOM1, document.getElementById('test'))
+        console.log(VDOM1);
+        console.log(typeof VDOM1);
+        console.log(VDOM1 instanceof Object);
     </script>
 </body>
 </html>

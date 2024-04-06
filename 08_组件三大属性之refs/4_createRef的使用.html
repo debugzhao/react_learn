@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"/>
+    
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入bable，用于将jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- 引入bable，用于将jsx转换为js -->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+        // 创建组件
+        class Demo extends React.Component {
+
+            // createRef调用后返回的是一个容器，该容器存储被ref所标识的标签，并且该容器是“专人专用”的
+            myRef = React.createRef()
+            // 展示左侧输入框数据
+            showData = ()=> {
+                alert(this.myRef.current.value)
+            }
+            showData1 = ()=> {
+                alert(this.input2.value)
+            }
+            render() {
+                return (
+                    <div>
+                        <input ref={this.myRef} type="text" placeholder="点击按钮提示数据"/> &nbsp;
+                        <button onClick={this.showData}>点击提示左侧数据</button> &nbsp;
+                        <input ref={c => this.input2 = c} onBlur={this.showData1} type="text" placeholder="失去焦点提示数据"/>
+                    </div>
+                )
+            }
+        }
+        // 渲染组件到页面
+        ReactDOM.render(<Demo a='1' b='2'/>, document.getElementById('test'))
+    </script>
+</body>
+</html>

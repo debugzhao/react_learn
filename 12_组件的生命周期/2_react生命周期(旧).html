@@ -68,8 +68,40 @@
                 )
             }
         }
+        
+        class A extends React.Component {
+            state = {
+                carName: '奔驰'
+            }
+
+            changeCar = ()=> {
+                this.setState({
+                    carName: '奥拓'
+                })
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h2>A组件</h2>
+                        <button onClick={this.changeCar}>换车</button>
+                        <B carName={this.state.carName}/>
+                    </div>
+                )
+            }
+        }
+
+        class B extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h2>B组件 carName: {this.props.carName}</h2>
+                    </div>
+                )
+            }
+        }
         // 渲染组件到页面
-        ReactDOM.render(<Count/>, document.getElementById('test'))
+        ReactDOM.render(<A/>, document.getElementById('test'))
     </script>
 </body>
 </html>
